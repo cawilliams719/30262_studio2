@@ -10,12 +10,15 @@
     <!-- Add styling info for the map -->
     <style>
          #mapId {
-      height: 400px;
-      width: 800px;
+      height: 600px;
+      width: 100%;
+      align-self: center;
     }
+
     </style>
     <!-- Adding styling info for page layout by reading in a CSS file -->
     <link rel="stylesheet" href="styles.css">
+    <!-- add wcs logo -->
 </head>
 
 <body>
@@ -28,30 +31,63 @@
     <li><a href="Mapbox-gl-js-ct.html" target="_self">Output 3</a></li>
     <li><a class="active" href="Mapbox-gl-js-bm.html" target="_self">Output 4</a></li>
   </ul>
-  <br>
+
+
+  <div class = "header_wcs">
+    <h1>Wildlife Conservation Society Tanzania</h1>
+  </div>
 
     <!-- Container for the map -->
     <div id="mapId"></div>
 
     <script>
     // Set your Mapbox access token
-    mapboxgl.accessToken = "";
+    mapboxgl.accessToken = "pk.eyJ1IjoiY2F3aWxsaWFtcyIsImEiOiJja2xsZ3pxdmczaDZjMndxZXB2aXdrdTZ3In0.TBD0QCuYQMkeamI_srV2XQ";
 
     /* The map variable stores a new mapbox gl map.
-    * map's center set to [-122.467, 37.798] with zoom 13. 
+    * map's center set to [-122.467, 37.798] with zoom 13.
     * Set the style URL to your custom style
     * Update the style with your custom style's Style URL.
     * See the Style URL'S reference for more info: https://docs.mapbox.com/help/glossary/style-url/
     */
     var map = new mapboxgl.Map({
-    center: [-122.467, 37.798],
-    zoom: 13,
-    style: "",
+    center: [33.4, -8.0],
+    zoom: 5.5,
+    style: "mapbox://styles/cawilliams/cknnne1yy0r8917tcf3y76y7x",
     container: "mapId"
     });
 
+    var popup = new mapboxgl.Popup({ closeOnClick: false })
+        .setLngLat([-122.467, 37.798])
+        .setHTML('<h1>WCS Tanzania</h1>')
+        .addTo(map);
+
+   var marker = new mapboxgl.Marker({
+     color: "#04ac9e",
+     draggable: false
+   }).setLngLat([33.44317635713132, -8.887810290450899])
+   .setPopup(popup)
+   .addTo(map);
     </script>
+<img src="wcs_logo.png" alt="WCS" width="3%">
+</br></br>
+<!-- WCS About Section with transition effect -->
+<section>
+  <div class="about">
+      </br>
+        <h1>Why WCS?</h1>
+          <p>This basemap is created for the Wildlife Conservation Society based on its beautiful color palette in the organization's logo. While this is not an offical WCS webmap, I am currently involved in project with WCS that inspired me to produce this web map</p>
+            <br>
+        <h1>Background</h1>
+          <p>WCS is an organization dedicated to conservation for over 125 years. Their mission is to protect wildlife in a variety of regions across the globe. For more information on WCS, check out their website below!</p>
+            <br>
+            <a href="https://www.wcs.org/" class="button">WCS Home Page</a>
+        <h1>Web Map Colors</h1>
+          <p>Web map colors are derived from the WCS logo which features five colors ranging from green to blue. These colors were extracted using the <a href="https://imagecolorpicker.com/en" class="hyp">image color picker tool.<a></p>
+    </br></br></br></br></br></br></br>
+  </div>
+</section>
 
+<script src="app.js"></script>
 </body>
-
 </html>
